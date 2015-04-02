@@ -8,7 +8,8 @@ import (
 	"os"
 )
 
-/** Define JSON Response from API into struct **/
+// APIResponseJSON is a struct defining the JSON response returned
+// from isitup.org
 type APIResponseJSON struct {
 	Domain       string  `json:"domain"`
 	Port         int     `json:"port"`
@@ -18,12 +19,10 @@ type APIResponseJSON struct {
 	ResponseTime float64 `json:"response_time"`
 }
 
-// GetStatus returns the Status Code from the API as a int.
-// It requires the site and UserAgent to be specified as arguments.
-func GetStatus(site, UserAgent string) int {
-	url := "http://isitup.org/" + site + ".json" // Define the url to fetch with the site passed to this function
+var data APIResponseJSON
 
-	/** Retrieve JSON response **/
+func getJSONresp(site, UserAgent string) {
+	url := "http://isitup.org/" + site + ".json"
 	client := &http.Client{}
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -38,14 +37,30 @@ func GetStatus(site, UserAgent string) int {
 		os.Exit(1)
 	}
 
-	/** Decode JSON Response **/
+	// Decode JSON response
 	decoder := json.NewDecoder(resp.Body)
-	var data APIResponseJSON
 	err = decoder.Decode(&data)
 	if err != nil {
 		log.Fatalln("Error decoding JSON response.", "Error message: ", err)
 		os.Exit(1)
 	}
+}
 
-	return data.StatusCode
+// GetDomain returns the domain requested, requires site and UserAgent as arguments (both strings).
+// This function is probably unnecessary, seeing as the domain is already passed to the function itself.
+func GetDomain(site, UserAgent string) string {
+	getJSONresp(site, UserAgent)
+	return data.Domain
+}
+
+// GetIP returns the IP of the site, requires site and UserAgent as arguments (both strings).
+func GetIP(site, UserAgent string) string {
+	getJSONresp(site, UserAgent)
+	return data.ResponseIP
+}
+
+// GetPort returns the port of the site (usually 80 for HTTP), requires site and UserAgent as arguments (both strings).
+func GetPort(site, UserAgent string) int {
+	getJSONresp(site, UserAgent)
+	return data.Port
 }
