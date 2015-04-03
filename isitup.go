@@ -64,3 +64,15 @@ func GetPort(site, UserAgent string) int {
 	getJSONresp(site, UserAgent)
 	return data.Port
 }
+
+// GetStatus returns the HTTP status code from the website, requires site and UserAgent as arguments (both strings)
+func GetStatus(site, UserAgent string) int {
+	getJSONresp(site, UserAgent)
+	return data.StatusCode
+}
+
+// GetResponseTime returns the time taken for a response from the site specifed, requires site and UserAgent as arguments (both strings)
+func GetResponseTime(site, UserAgent string) float64 {
+	getJSONresp(site, UserAgent)
+	return data.ResponseTime
+}
