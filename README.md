@@ -1,6 +1,8 @@
 go-isitup
 =========
 
+[![Build Status](https://drone.io/github.com/shymega/go-isitup/status.png)](https://drone.io/github.com/shymega/go-isitup/latest)
+
 go-isitup is a library for querying the [isitup.org](https://isitup.org/api/api.html) API service. 
 
 ## Utilising
