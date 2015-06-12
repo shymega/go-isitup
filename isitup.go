@@ -1,5 +1,5 @@
 // Package isitup provides a Go wrapper around the isitup.org API
-package isitup
+package isitup // import "github.com/shymega/go-isitup"
 
 import (
 	"encoding/json"
