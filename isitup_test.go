@@ -5,25 +5,35 @@ import (
 )
 
 func TestGetDomain(t *testing.T) {
-	var v string
-	v = GetDomain("bbc.co.uk", "go-isitup Unit Tests")
-	if v != "bbc.co.uk" {
-		t.Error("Expected bbc.co.uk, got", v)
+	v := GetDomain("google.com", "go-isitup Unit Tests")
+	if v != "google.com" {
+		t.Error("Expected google.com, got", v)
 	}
 }
 
 func TestGetIP(t *testing.T) {
-	var v string
-	v = GetIP("example.com", "go-isitup Unit Tests")
-	if v != "93.184.216.34" {
-		t.Error("Expected 93.184.216.34, got", v)
+	v := GetIP("google.com", "go-isitup Unit Tests")
+	if v != "216.58.213.110" {
+		t.Error("Expected 216.58.213.110, got", v)
 	}
 }
 
 func TestGetPort(t *testing.T) {
-	var v int
-	v = GetPort("cnn.com", "go-isitup Unit Tests")
+	v := GetPort("google.com", "go-isitup Unit Tests")
 	if v != 80 {
 		t.Error("Expected 80, got", v)
 	}
+}
+
+func TestGetStatus(t *testing.T) {
+	v := GetStatus("google.com", "go-isitup Unit Tests")
+	if v != 302 {
+		t.Error("Expected HTTP code 302, got", v)
+	}
+}
+
+func TestGetResponseTime(t *testing.T) {
+	//	v := GetResponseTime("google.com", "go-isitup Unit Tests")
+	// Empty test for now.
+	// Not sure _how_ to test, response times are variable!
 }
