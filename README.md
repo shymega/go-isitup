@@ -11,7 +11,8 @@ I will be making examples for use with go-isitup, at some point in development.
 
 ## License
 
-go-isitup is licensed under the MIT License. Have a look at LICENSE.md to find the full license.
+go-isitup is licensed under the MIT License (Expat).
+Look at [COPYING](COPYING) to find the full license.
 
 ## Contributing
 
