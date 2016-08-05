@@ -87,9 +87,9 @@ func GetPort(site, UserAgent string) int {
 	return data.Port
 }
 
-// GetStatus returns the HTTP status code from the website, requires
+// GetStatusCode returns the HTTP status code from the website, requires
 // site and UserAgent as arguments (both strings)
-func GetStatus(site, UserAgent string) int {
+func GetStatusCode(site, UserAgent string) int {
 	data := getAPIResponse(site, UserAgent)
 	return data.ResponseCode
 }

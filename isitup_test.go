@@ -25,8 +25,8 @@ func TestGetPort(t *testing.T) {
 	}
 }
 
-func TestGetStatus(t *testing.T) {
-	v := GetStatus("google.com", "go-isitup Unit Tests")
+func TestGetStatusCode(t *testing.T) {
+	v := GetStatusCode("google.com", "go-isitup Unit Tests")
 	if v != 302 {
 		t.Error("Expected HTTP code 302, got", v)
 	}
