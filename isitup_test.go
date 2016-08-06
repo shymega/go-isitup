@@ -1,6 +1,7 @@
 package isitup
 
 import (
+	"reflect"
 	"testing"
 )
 
@@ -33,7 +34,10 @@ func TestGetStatusCode(t *testing.T) {
 }
 
 func TestGetResponseTime(t *testing.T) {
-	//	v := GetResponseTime("example.com", "go-isitup Unit Tests")
-	// Empty test for now.
-	// Not sure _how_ to test, response times are variable!
+	v := GetResponseTime("example.com", "go-isitup Unit Tests")
+	typ := reflect.TypeOf(v)
+
+	if typ.Kind() != reflect.Float64 {
+		t.Error("Expected type of `float64`, got", reflect.TypeOf(v))
+	}
 }
