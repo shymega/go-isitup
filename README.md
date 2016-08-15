@@ -16,4 +16,7 @@ Look at [COPYING](COPYING) to find the full license.
 
 ## Contributing
 
-Want to contribute? Fork this repo and submit a pull request.
+Want to contribute to go-isitup?
+
+- Make a issue
+- Fix a bug, submit a PR
