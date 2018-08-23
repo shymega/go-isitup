@@ -1,5 +1,21 @@
 // Package isitup provides a Go wrapper around the isitup.org API
 
+/*
+*  Copyright 2018 Dom Rodriguez (shymega)
+*
+*  Licensed under the Apache License, Version 2.0 (the "License");
+*  you may not use this file except in compliance with the License.
+*  You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+*  Unless required by applicable law or agreed to in writing, software
+*  distributed under the License is distributed on an "AS IS" BASIS,
+*  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+*  See the License for the specific language governing permissions and
+*  limitations under the License.
+*/
+
 package isitup // import "github.com/shymega/go-isitup"
 
 import (
@@ -10,9 +26,9 @@ import (
 	"os"
 )
 
-// APIResponseJSON is a model of the data returned
+// APIResponse is a model of the data returned
 // from isitup.org
-type APIResponseJSON struct {
+type APIResponse struct {
 	Domain       string  `json:"domain"`
 	Port         int     `json:"port"`
 	StatusCode   int     `json:"status_code"`
@@ -24,10 +40,9 @@ type APIResponseJSON struct {
 // getAPIResponse returns a JSON struct of the API's response.
 // It requires a site to test upon, and a UserAgent.
 // This function is used internally.
-func getAPIResponse(site, UserAgent string) (response APIResponseJSON) {
-
+func getAPIResponse(site, UserAgent string) (response APIResponse) {
 	// Instantiate a new instance of the JSON data model.
-	data := APIResponseJSON{}
+	data := APIResponse{}
 
 	// Format the request URL
 	url := fmt.Sprintf("http://isitup.org/%s.json", site)
