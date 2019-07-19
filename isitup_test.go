@@ -17,7 +17,6 @@
 package isitup
 
 import (
-	"reflect"
 	"testing"
 )
 
@@ -51,9 +50,7 @@ func TestGetStatusCode(t *testing.T) {
 
 func TestGetResponseTime(t *testing.T) {
 	v := GetResponseTime("example.com", "go-isitup Unit tests")
-	typ := reflect.TypeOf(v)
-
-	if typ.Kind() != reflect.Float64 {
-		t.Error("Expected type of `float64`, got", reflect.TypeOf(v))
+	if v > 10000 {
+		t.Error("Expected passable response time, got slower result.")
 	}
 }
