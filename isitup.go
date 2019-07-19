@@ -84,34 +84,29 @@ func getAPIResponse(site, UserAgent string) (response APIResponse) {
 // unnecessary, seeing as the domain is already passed to the function
 // itself.
 func GetDomain(site, UserAgent string) string {
-	data := getAPIResponse(site, UserAgent)
-	return data.Domain
+	return getAPIResponse(site, UserAgent).Domain
 }
 
 // GetIP returns the IP of the site, requires site and UserAgent as
 // arguments (both strings).
 func GetIP(site, UserAgent string) string {
-	data := getAPIResponse(site, UserAgent)
-	return data.ResponseIP
+	return getAPIResponse(site, UserAgent).ResponseIP
 }
 
 // GetPort returns the port of the site (usually 80 for HTTP),
 // requires site and UserAgent as arguments (both strings).
 func GetPort(site, UserAgent string) int {
-	data := getAPIResponse(site, UserAgent)
-	return data.Port
+	return getAPIResponse(site, UserAgent).Port
 }
 
 // GetStatusCode returns the HTTP status code from the website, requires
 // site and UserAgent as arguments (both strings)
 func GetStatusCode(site, UserAgent string) int {
-	data := getAPIResponse(site, UserAgent)
-	return data.ResponseCode
+	return getAPIResponse(site, UserAgent).ResponseCode
 }
 
 // GetResponseTime returns the time taken for a response from the site
 // specified, requires site and UserAgent as arguments (both strings)
 func GetResponseTime(site, UserAgent string) float64 {
-	data := getAPIResponse(site, UserAgent)
-	return data.ResponseTime
+	return getAPIResponse(site, UserAgent).ResponseTime
 }
